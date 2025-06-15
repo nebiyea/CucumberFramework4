@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qacohortproject_9320.iml" filepath="$PROJECT_DIR$/.idea/modules/qacohortproject_9320.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qacohortproject_9320-build.iml" filepath="$PROJECT_DIR$/.idea/modules/qacohortproject_9320-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qacohortproject.iml" filepath="$PROJECT_DIR$/.idea/modules/qacohortproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qacohortproject-build.iml" filepath="$PROJECT_DIR$/.idea/modules/qacohortproject-build.iml" />
     </modules>
   </component>
 </project>
