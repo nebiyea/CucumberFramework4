@@ -1,16 +1,13 @@
 package pages
 
-import pages.BasePage.driver
-import utils.ConfigReader
+import pages.LoginPage.getText
+import locators.AccountOverviewLocators.{AccountOverviewHeader, expectedHeader}
+import utils.Assertion
 
-
-object AccountOverviewPage {
-  // — Launching the test URL —
+object AccountsOverviewPage {
+  // — Verifying the header —
   def verifyHeader(): Unit = {
-
-    val testUrl = ConfigReader.get("test.url")
-    driver.get(testUrl)
+    Assertion.assert(getText(AccountOverviewHeader), expectedHeader)
   }
-
 }
 

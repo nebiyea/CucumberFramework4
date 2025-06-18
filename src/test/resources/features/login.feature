@@ -1,5 +1,8 @@
-Feature: Login Feature
+Feature: Para-bank Login
 
-  Scenario: Open the login page
-    Given I open the login page
-    Then I should see the login form
+  @smoke
+  Scenario: Successful login with valid credentials
+    Given the user is on the OrangeHRM login page
+    When the user enters valid username and password
+    And the user clicks the Login button
+    Then the user should be redirected to the Dashboard

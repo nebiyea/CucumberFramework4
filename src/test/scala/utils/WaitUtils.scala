@@ -1,29 +1,42 @@
-package utils  // Package declaration - places this object inside the 'utils' namespace
+package utils
 
-object ConfigReader {  // Singleton object to read configuration properties
+import java.time.Duration
+import org.openqa.selenium.{WebDriver, WebElement, NoSuchElementException}
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, WebDriverWait}
+import java.util.function.Function
 
-  // Create a new Java Properties object to hold key-value pairs from the config file
-  private val props = new java.util.Properties()
+object WaitUtils {
 
-  // Load the 'config.properties' file as an input stream from the classpath
-  private val stream = getClass.getClassLoader.getResourceAsStream("config.properties")
+  /**
+   * Set implicit wait time for the WebDriver globally.
+   * Selenium will wait this long when trying to find elements.
+   */
+  def setImplicitWait(driver: WebDriver, seconds: Long): Unit = {
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds))
+  }
 
-  // Check that the config file was found; if not, throw a runtime exception with a message
-  require(stream != null, "config.properties file not found!")
+  /**
+   * Wait explicitly for a specific element to be visible within given timeout.
+   * Uses ExpectedConditions.visibilityOf
+   */
+  def waitForElementVisible(driver: WebDriver, element: WebElement, timeoutSeconds: Long): WebElement = {
+    val wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
+    wait.until(ExpectedConditions.visibilityOf(element))
+  }
 
-  // Load properties from the input stream into the 'props' object
-  props.load(stream)
+  /**
+   * Fluent wait for a WebElement with custom polling interval and ignoring exceptions.
+   * Example use: wait for element to be clickable or any custom condition.
+   */
+  def fluentWaitForElement(driver: WebDriver,
+                           timeoutSeconds: Long,
+                           pollingMillis: Long,
+                           condition: Function[WebDriver, WebElement]): WebElement = {
+    val wait = new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(timeoutSeconds))
+      .pollingEvery(Duration.ofMillis(pollingMillis))
+      .ignoring(classOf[NoSuchElementException])
 
-  // Define a method to get the value of a property by its key
-  def get(key: String): String = {
-    // Get the value associated with the key from the properties
-    val value = props.getProperty(key)
-
-    // If the key does not exist, throw an exception indicating the missing key
-    require(value != null, s"Property '$key' not found!")
-
-    // Return the found value
-    value
+    wait.until(condition)
   }
 }
-

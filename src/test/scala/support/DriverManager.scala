@@ -1,5 +1,7 @@
 package support
 
-class DriverManager {
+import org.openqa.selenium.WebDriver
 
+object DriverManager {
+    var driver: WebDriver = _
 }

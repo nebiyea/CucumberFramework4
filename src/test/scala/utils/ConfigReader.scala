@@ -1,23 +1,29 @@
 package utils
 
+object ConfigReader {
 
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.remote.{DesiredCapabilities, RemoteWebDriver}
-import java.net.URL
+  // Create a new Scala Properties object to hold key-value pairs from the config file
+  private val props = new java.util.Properties()
 
-object RemotWebDriver extends App {
-  // URL of your Selenium Grid Hub
-  val gridHubUrl = new URL("http://localhost:4444/wd/hub")
+  // Load the 'config.properties' file as an input stream from the classpath
+  private val stream = getClass.getClassLoader.getResourceAsStream("config.properties")
 
-  // Specify browser & platform (DesiredCapabilities)
-  val capabilities = DesiredCapabilities.chrome() // or firefox(), edge(), etc.
+  // Check that the config file was found; if not, throw a runtime exception with a message
+  require(stream != null, "config.properties file not found!")
 
-  // Create RemoteWebDriver connected to Selenium Grid Hub
-  val driver: WebDriver = new RemoteWebDriver(gridHubUrl, capabilities)
+  // Load properties from the input stream into the 'props' object
+  props.load(stream)
 
-  driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+  // Define a method to get the value of a property by its key
+  def get(key: String): String = {
+    // Get the value associated with the key from the properties
+    val value = props.getProperty(key)
 
-  println("Page title is: " + driver.getTitle)
+    // If the key does not exist, throw an exception indicating the missing key
+    require(value != null, s"Property '$key' not found!")
 
-  driver.quit()
+    // Return the found value
+    value
+  }
 }
+
