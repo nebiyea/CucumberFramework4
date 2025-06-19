@@ -11,6 +11,7 @@ libraryDependencies ++= Seq(
   "org.seleniumhq.selenium" % "selenium-java" % "4.33.0",     // Latest stable
   "org.scalatest" %% "scalatest" % "3.2.19" % Test,           // Latest stable
   "junit" % "junit" % "4.13.2" % Test,                        // Still widely used
-  "commons-io" % "commons-io" % "2.19.0"                      // Latest stable
+  "commons-io" % "commons-io" % "2.19.0",                      // Latest stable
+  "com.novocode" % "junit-interface" % "0.11"   % Test   // ← required for sbt
 )
 

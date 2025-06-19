@@ -13,4 +13,4 @@ import org.junit.runner.RunWith                               // Import JUnit’
   ),
   monochrome = true                                          // Strips ANSI colours from console output for easier reading in plain terminals
 )                                                            // End of @CucumberOptions block
-class runner                                                 // Empty body is fine; class merely acts as a configuration holder
+class TestRunner                                                 // Empty body is fine; class merely acts as a configuration holder
