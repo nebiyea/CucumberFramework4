@@ -25,6 +25,6 @@ cd CucumberCurriculum.
 sbt "testOnly *TestRunner"
 
 OR
-# 2. Run just the runner class using the tags
+# 2. Run the runner class using the tags
 sbt "testOnly *TestRunner -- -Dcucumber.filter.tags=@smoke"
 
