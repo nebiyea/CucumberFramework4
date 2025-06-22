@@ -11,19 +11,9 @@ trait BasePage {
   val driver: WebDriver = DriverManager.driver
 
   def browserLaunch(): Unit = {
-    val testUrl = ConfigReader.get("base.url")
+    val testUrl = ConfigReader.get("form.Url")
     driver.get(testUrl)
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))
-
-  }
-
-  def browserLaunch1(): Unit = {
-    val newUrl = ConfigReader.get("form.Url")
-    driver.get(newUrl)
-    println(s"Config URL: $newUrl")
-
-
-
   }
 
   // Locator Identification

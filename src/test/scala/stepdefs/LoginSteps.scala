@@ -1,8 +1,7 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import pages.AccountsOverviewPage.verifyHeader
-import pages.LoginPage.{browserLaunch, buttonSubmit, inputPassword, inputUserName}
+import .verifyHeader
 import testdata.Data.{passwordText, userNameText}
 
 

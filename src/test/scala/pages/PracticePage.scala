@@ -10,9 +10,6 @@ object PracticePage extends BasePage {
 
   private val cookieAcceptButton: By = By.id("ez-accept-necessary") // Update to your actual ID
 
-  // Wait object
-  //private val wait = new WebDriverWait(driver, Duration.ofSeconds(5))
-
   // Page Actions
 
   def acceptCookiesIfPresent(): Unit = {
@@ -29,11 +26,10 @@ object PracticePage extends BasePage {
     }
   }
 
-  def inputUsername(text: String): Unit = {
+  def inputFirstname(text: String): Unit = {
     inputText(Username1, text)
 
   }
-
 
   def inputLastname(text: String): Unit = {
     inputText(Lastname1, text)

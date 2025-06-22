@@ -1,7 +1,6 @@
 package locators
 
 import org.openqa.selenium.{By, WebElement}
-import pages.LoginPage.{driver, findById}
 
 object PracticePageLocator {
 
