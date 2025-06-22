@@ -1,5 +1,5 @@
 package pages
-import locators.PracticePageLocator.{Lastname1, Username1}
+import locators.PracticePageLocator.{Lastname, Username}
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import org.openqa.selenium.{By, JavascriptExecutor, WebDriver}
 
@@ -27,12 +27,12 @@ object PracticePage extends BasePage {
   }
 
   def inputFirstname(text: String): Unit = {
-    inputText(Username1, text)
+    inputText(Username, text)
 
   }
 
   def inputLastname(text: String): Unit = {
-    inputText(Lastname1, text)
+    inputText(Lastname, text)
 
   }
 

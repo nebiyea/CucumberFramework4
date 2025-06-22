@@ -5,8 +5,8 @@ import org.openqa.selenium.{By, WebElement}
 object PracticePageLocator {
 
 
-  val Username1: By = By.cssSelector("input[name='firstname']")
-  val Lastname1:By= By.id("lastName")
+  val Username: By = By.cssSelector("input[name='firstname']")
+  val Lastname:By= By.cssSelector("input[name='lastname']")
 
 
  //def experienceRadio(yearIndex: Int): By = By.id(s"exp-$yearIndex")
