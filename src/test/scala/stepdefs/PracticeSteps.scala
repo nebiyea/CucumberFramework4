@@ -14,6 +14,6 @@ class PracticeSteps extends ScalaDsl with EN {
     println(s"Username sent: $UserNameText1")
     println(s"Lastname sent: $lastnameText1")
     selectGender("female")
-    Thread.sleep(500000)
+    Thread.sleep(5000)
   }
 }
