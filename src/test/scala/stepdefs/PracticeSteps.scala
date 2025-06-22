@@ -1,13 +1,14 @@
 package stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
-import pages.PracticePage.{acceptCookiesIfPresent, browserLaunch, inputFirstname, inputLastname, selectGender}
+import pages.PracticePage.{acceptGrayBannerCookiesIfPresent, acceptGreenBannerCookiesIfPresent, browserLaunch, inputFirstname, inputLastname, selectGender}
 import testdata.PracticeData.{UserNameText1, lastnameText1}
 
 class PracticeSteps extends ScalaDsl with EN {
 
   Given("""all required fields have been populated""") { () =>
     browserLaunch()
-    acceptCookiesIfPresent()
+    acceptGreenBannerCookiesIfPresent()
+    acceptGrayBannerCookiesIfPresent()
     inputFirstname(UserNameText1)
     inputLastname(lastnameText1)
     println(s"Username sent: $UserNameText1")

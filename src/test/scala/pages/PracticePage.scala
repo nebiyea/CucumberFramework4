@@ -1,6 +1,6 @@
 package pages
 
-import locators.PracticePageLocator.{Lastname, Username, genderFemale, genderMale, yearExperience}
+import locators.PracticePageLocator.{Lastname, Username, cookieGrayBannerAcceptButton, cookieGreenBannerAcceptButton, genderFemale, genderMale, yearExperience}
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import org.openqa.selenium.{By, JavascriptExecutor, WebDriver}
 import utils.WaitUtils
@@ -9,12 +9,24 @@ import java.time.Duration
 
 object PracticePage extends BasePage {
 
-  private val cookieAcceptButton: By = By.id("ez-accept-necessary")
-
-  def acceptCookiesIfPresent(): Unit = {
+  def acceptGreenBannerCookiesIfPresent(): Unit = {
     try {
       val wait = new WebDriverWait(driver, Duration.ofSeconds(10))
-      val cookieButton = wait.until(ExpectedConditions.presenceOfElementLocated(cookieAcceptButton))
+      val cookieButton = wait.until(ExpectedConditions.presenceOfElementLocated(cookieGreenBannerAcceptButton))
+      if (cookieButton.isDisplayed) {
+        cookieButton.click()
+        println(" Cookie consent accepted.")
+      }
+    } catch {
+      case _: org.openqa.selenium.TimeoutException =>
+        println("ℹ Cookie consent button not present.")
+    }
+  }
+
+  def acceptGrayBannerCookiesIfPresent(): Unit = {
+    try {
+      val wait = new WebDriverWait(driver, Duration.ofSeconds(10))
+      val cookieButton = wait.until(ExpectedConditions.presenceOfElementLocated(cookieGrayBannerAcceptButton))
       if (cookieButton.isDisplayed) {
         cookieButton.click()
         println(" Cookie consent accepted.")
