@@ -49,10 +49,10 @@ object PracticePage extends BasePage {
     gender.toLowerCase match {
       case "male" =>
         WaitUtils.waitForElementVisible(driver, driver.findElement(genderMale), 10)
-        driver.findElement(genderMale).click()
+        clickOn(genderMale)
       case "female" =>
         WaitUtils.waitForElementVisible(driver, driver.findElement(genderFemale), 10)
-        driver.findElement(genderFemale).click()
+        clickOn(genderFemale)
       case _ =>
         println(" invalid gender. Please choose 'male' or 'female'.")
         return
