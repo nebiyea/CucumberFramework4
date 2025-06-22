@@ -25,15 +25,13 @@ trait BasePage {
   def findByCssSelector(css: String): WebElement = driver.findElement(By.cssSelector(css))
   def findByXpath(xpath: String): WebElement = driver.findElement(By.xpath(xpath))
 
-
   // Common Actions
 
   def inputText(selector: By, text: String): Unit =
     driver.findElement(selector).sendKeys(text)
 
-  def clickOn(selector: By): Unit = {
+  def clickOn(selector: By): Unit =
     driver.findElement(selector).click()
-  }
 
   def getText(selector: By): String =
     driver.findElement(selector).getText
