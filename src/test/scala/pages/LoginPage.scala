@@ -12,7 +12,9 @@ object LoginPage extends BasePage {
   // — Password —
   def inputPassword(text: String): Unit = {
     inputText(Password, text)
+
   }
+
   // — Submit Button —
   def buttonSubmit(): Unit = {
     clickOn(Submit)

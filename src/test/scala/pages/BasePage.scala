@@ -1,8 +1,11 @@
 package pages
 
 import org.openqa.selenium.{By, WebDriver, WebElement}
-import support.DriverManager
 import utils.ConfigReader
+
+import support.DriverManager
+
+import java.time.Duration
 
 trait BasePage {
   val driver: WebDriver = DriverManager.driver
@@ -10,6 +13,17 @@ trait BasePage {
   def browserLaunch(): Unit = {
     val testUrl = ConfigReader.get("base.url")
     driver.get(testUrl)
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))
+
+  }
+
+  def browserLaunch1(): Unit = {
+    val newUrl = ConfigReader.get("form.Url")
+    driver.get(newUrl)
+    println(s"Config URL: $newUrl")
+
+
+
   }
 
   // Locator Identification
@@ -20,6 +34,7 @@ trait BasePage {
   def findByTagName(tag: String): WebElement = driver.findElement(By.tagName(tag))
   def findByCssSelector(css: String): WebElement = driver.findElement(By.cssSelector(css))
   def findByXpath(xpath: String): WebElement = driver.findElement(By.xpath(xpath))
+
 
   // Common Actions
 
