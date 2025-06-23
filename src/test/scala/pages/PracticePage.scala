@@ -1,11 +1,11 @@
 package pages
-
-import locators.PracticePageLocator.{Lastname, Username, cookieGrayBannerAcceptButton, cookieGreenBannerAcceptButton, genderFemale, genderMale, yearExperience}
+import locators.PracticePageLocator.{Lastname, Profession, Tools, Username, cookieGrayBannerAcceptButton, cookieGreenBannerAcceptButton, dateInput, genderFemale, genderMale, yearsExperience}
 import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
-import org.openqa.selenium.{By, JavascriptExecutor, WebDriver}
 import utils.WaitUtils
+import java.time.format.DateTimeFormatter
+import java.time.{Duration, LocalDate}
 
-import java.time.Duration
+
 
 object PracticePage extends BasePage {
 
@@ -57,7 +57,29 @@ object PracticePage extends BasePage {
         println(" invalid gender. Please choose 'male' or 'female'.")
         return
     }
-    println(s" $gender gender selected.")
+    println(s" $gender Female selected.")
   }
+
+  def selectYearsExperience(): Unit = {
+    clickOn(yearsExperience)
+    println(s" Experience year 6 ")
+
+  }
+  def enterTodayDate(): Unit = {
+    val today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+    val input = driver.findElement(dateInput)
+    input.clear()
+    input.sendKeys(today)
+    println(s" Today's date entered: $today")
+}
+def selectProfession(): Unit ={
+  clickOn(Profession)
+  println("Profession Autmotion Tester")
+
+}
+ def selectTool(): Unit ={
+   clickOn(Tools)
+   println("Selenium Webdriver")
+ }
 
 }

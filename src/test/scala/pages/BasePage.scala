@@ -36,4 +36,7 @@ trait BasePage {
   def getText(selector: By): String =
     driver.findElement(selector).getText
 
+
+
+
 }

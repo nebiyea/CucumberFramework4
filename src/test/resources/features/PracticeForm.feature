@@ -6,6 +6,6 @@ Feature: Practice Form Submission
 
   Scenario: Submit the form with valid data
     Given all required fields have been populated
-    # When the submit button is selected
+     When the submit button is selected
     # Then the form should be submitted successfully
 

@@ -18,7 +18,7 @@ class Hooks extends ScalaDsl with EN {
     println("Scenario failed! Taking screenshot...")
     val screenshotFile: File =
       takeScreenshot(DriverManager.driver, userScreenshotDir, s"${scenario.getName}_failure")
-    println(s"Saved screenshot to: ${screenshotFile.getPath} - ✅")
+    println(s"Saved screenshot to: ${screenshotFile.getPath} - ")
   }
 
   Before {
