@@ -67,9 +67,7 @@ object PracticePage extends BasePage {
   }
   def enterTodayDate(): Unit = {
     val today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-    val input = driver.findElement(dateInput)
-    input.clear()
-    input.sendKeys(today)
+    inputText(dateInput, today)
     println(s" Today's date entered: $today")
 }
 def selectProfession(): Unit ={

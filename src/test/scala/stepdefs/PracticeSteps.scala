@@ -5,7 +5,6 @@ import testdata.PracticeData.{UserNameText, lastnameText}
 
 
 class PracticeSteps extends ScalaDsl with EN {
-
   
   Given("""the practice page has been opened""") { () =>
     browserLaunch()
