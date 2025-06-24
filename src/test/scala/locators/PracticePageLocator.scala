@@ -14,6 +14,11 @@ object PracticePageLocator {
   val dateInput:By=By.cssSelector("#datepicker")
   val Profession:By=By.cssSelector(" #profession-1")
   val Tools:By=By.cssSelector("#tool-2")
+  val country:By=By.xpath("//*[@id=\"continents\"]")
+  val selectCommands:By=By.cssSelector("#selenium_commands > option:nth-child(1)")
+  val file:By=By.xpath("//*[@id=\"photo\"]")
+  //val submitButtton:By= By.cssSelector("btn btn-info")
+
 
 
 

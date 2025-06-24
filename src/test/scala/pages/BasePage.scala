@@ -1,8 +1,7 @@
 package pages
 
-import org.openqa.selenium.{By, WebDriver, WebElement}
+import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 import utils.ConfigReader
-
 import support.DriverManager
 
 import java.time.Duration
@@ -14,6 +13,7 @@ trait BasePage {
     val testUrl = ConfigReader.get("form.Url")
     driver.get(testUrl)
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))
+
   }
 
   // Locator Identification
@@ -37,6 +37,7 @@ trait BasePage {
     driver.findElement(selector).getText
 
 
-
+  def input(selector: By, text: String): Unit =
+    driver.findElement(selector).sendKeys(text)
 
 }

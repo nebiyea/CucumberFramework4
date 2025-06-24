@@ -1,11 +1,9 @@
 package stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
-import pages.PracticePage.{acceptGrayBannerCookiesIfPresent, acceptGreenBannerCookiesIfPresent, browserLaunch, enterTodayDate, inputFirstname, inputLastname, selectGender, selectProfession, selectTool, selectYearsExperience}
+import pages.PracticePage.{acceptGrayBannerCookiesIfPresent, acceptGreenBannerCookiesIfPresent, browserLaunch, enterTodayDate, inputFirstname, inputLastname, selectCommand, selectCountry, selectGender, selectProfession, selectTool, selectYearsExperience,uploadFile}
 import testdata.PracticeData.{UserNameText, lastnameText}
-
-
 class PracticeSteps extends ScalaDsl with EN {
-  
+
   Given("""the practice page has been opened""") { () =>
     browserLaunch()
     acceptGreenBannerCookiesIfPresent()
@@ -22,12 +20,14 @@ class PracticeSteps extends ScalaDsl with EN {
     enterTodayDate()
     selectProfession()
     selectTool()
-
-    Thread.sleep(50000)
+    selectCountry("Europe")
+    selectCommand()
+    uploadFile()
 
   }
-  When ("""the submit button is selected"""){ () =>
 
+  When ("""the submit button is selected""") { () =>
+    //submit()
 
   }
 }
