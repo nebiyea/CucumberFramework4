@@ -1,15 +1,19 @@
 package pages
 
-import org.openqa.selenium.{By, WebDriver, WebElement}
-import support.DriverManager
+import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 import utils.ConfigReader
+import support.DriverManager
+
+import java.time.Duration
 
 trait BasePage {
   val driver: WebDriver = DriverManager.driver
 
   def browserLaunch(): Unit = {
-    val testUrl = ConfigReader.get("base.url")
+    val testUrl = ConfigReader.get("form.Url")
     driver.get(testUrl)
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))
+
   }
 
   // Locator Identification
@@ -26,11 +30,14 @@ trait BasePage {
   def inputText(selector: By, text: String): Unit =
     driver.findElement(selector).sendKeys(text)
 
-  def clickOn(selector: By): Unit = {
+  def clickOn(selector: By): Unit =
     driver.findElement(selector).click()
-  }
 
   def getText(selector: By): String =
     driver.findElement(selector).getText
+
+
+  def input(selector: By, text: String): Unit =
+    driver.findElement(selector).sendKeys(text)
 
 }
